@@ -18,10 +18,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: "Karirku | %s",
-    default: "Karirku",
+    template: "Jasa Marga | %s",
+    default: "Jasa Marga",
   },
-  description: "Aplikasi pengenal karir kamu",
 };
 
 export default function RootLayout({

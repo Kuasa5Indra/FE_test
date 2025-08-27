@@ -1,5 +1,7 @@
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faChartLine, faBridgeWater, faTrafficLight } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Sidebar = () => {
     return (
@@ -7,28 +9,25 @@ const Sidebar = () => {
             <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
             <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                 {/* Sidebar content here */}
-                <a className="btn btn-ghost text-xl hidden lg:inline-block pt-1">KarirKu</a>
-                <li className="menu-title">Title</li>
-                <li><a><FaIcon icon={faThumbsUp} className="fa-fw" />Sidebar Item 1</a></li>
-                <li><a><FaIcon icon={faThumbsUp} className="fa-fw" />Sidebar Item 2</a></li>
+                <div className='flex items-center justify-center pt-1 pb-2 hidden lg:inline-block'>
+                    <Image
+                        alt="Profile Picture"
+                        src="/images/Logo_Jasamarga_Related_Business.png"
+                        width={100}
+                        height={100}
+                    />
+                </div>
+
+                <li><Link href="/dashboard"><FaIcon icon={faChartLine} className="fa-fw" />Dashboard</Link></li>
                 <li>
                     <details open>
-                        <summary><FaIcon icon={faThumbsUp} className="fa-fw" />Parent</summary>
+                        <summary><FaIcon icon={faTrafficLight} className="fa-fw" />Laporan Lalin</summary>
                         <ul>
-                            <li><a><FaIcon icon={faThumbsUp} className="fa-fw" />Submenu 1</a></li>
-                            <li><a><FaIcon icon={faThumbsUp} className="fa-fw" />Submenu 2</a></li>
-                            <li>
-                                <details open>
-                                    <summary><FaIcon icon={faThumbsUp} className="fa-fw" />Parent</summary>
-                                    <ul>
-                                        <li><a><FaIcon icon={faThumbsUp} className="fa-fw" />Submenu 1</a></li>
-                                        <li><a><FaIcon icon={faThumbsUp} className="fa-fw" />Submenu 2</a></li>
-                                    </ul>
-                                </details>
-                            </li>
+                            <li><Link href="/laporan-lalin/harian">Laporan Per Hari</Link></li>
                         </ul>
                     </details>
                 </li>
+                <li><Link href="/master-gerbang"><FaIcon icon={faBridgeWater} className="fa-fw" />Master Gerbang</Link></li>
             </ul>
         </div>
     );
