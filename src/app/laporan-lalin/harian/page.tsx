@@ -1,8 +1,14 @@
+'use client';
+
+import useSWR from 'swr';
+import { fetcher } from '@/lib/fetcher';
+import { LaluLintasPaginated } from '@/types/lalu-lintas';
 import PageContent from "@/components/layout/PageContent";
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown, faMagnifyingGlass, faFileExport } from '@fortawesome/free-solid-svg-icons'
 
 const LaporanLalinHarianPage = () => {
+    const { data } = useSWR<LaluLintasPaginated>(`/lalins`, fetcher);
     return (
         <>
             <PageContent>

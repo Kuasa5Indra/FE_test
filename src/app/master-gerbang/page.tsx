@@ -1,8 +1,15 @@
+'use client';
+
+import useSWR from 'swr';
+import { fetcher } from '@/lib/fetcher';
+import { GerbangPaginated } from '@/types/gerbang';
 import PageContent from "@/components/layout/PageContent";
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faTrashCan, faEye, faCaretDown, faMagnifyingGlass, faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 
 const MasterGerbangPage = () => {
+    const { data } = useSWR<GerbangPaginated>(`/gerbangs`, fetcher);
+
     return (
         <>
             <PageContent>
@@ -32,19 +39,22 @@ const MasterGerbangPage = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {/* row 1 */}
-                                        <tr>
-                                            <th>1</th>
-                                            <td>Cy Ganderton</td>
-                                            <td>Quality Control Specialist</td>
-                                            <td>
-                                                <div className="join">
-                                                    <button className="btn btn-ghost join-item"><FaIcon icon={faPen} /></button>
-                                                    <button className="btn btn-ghost join-item"><FaIcon icon={faEye} /></button>
-                                                    <button className="btn btn-ghost join-item"><FaIcon icon={faTrashCan} /></button>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        {data?.rows.rows.map((gerbang, idx) => {
+                                            return (
+                                                <tr key={idx + 1}>
+                                                    <th>{idx + 1}</th>
+                                                    <td>{gerbang.NamaCabang}</td>
+                                                    <td>{gerbang.NamaGerbang}</td>
+                                                    <td>
+                                                        <div className="join">
+                                                            <button className="btn btn-ghost join-item"><FaIcon icon={faPen} /></button>
+                                                            <button className="btn btn-ghost join-item"><FaIcon icon={faEye} /></button>
+                                                            <button className="btn btn-ghost join-item"><FaIcon icon={faTrashCan} /></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })}
                                     </tbody>
                                 </table>
 

@@ -1,7 +1,6 @@
 "use client"
 import { useState } from 'react';
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image';
 
@@ -56,20 +55,7 @@ const LoginPage = () => {
                                         </div>
                                     </div>
 
-                                    <div className="form-control">
-                                        <label className="label cursor-pointer">
-                                            <input type="checkbox" className="checkbox" />
-                                            <span className="label-text ml-2">Remember me</span>
-                                        </label>
-                                    </div>
-
                                     <button className="btn btn-primary btn-block">Login</button>
-                                    <button className="btn bg-black text-white border-black">
-                                        <FaIcon icon={faGithub} />
-                                        Login with GitHub
-                                    </button>
-                                    <div className="divider">Dont have account</div>
-                                    <button className="btn btn-outline btn-secondary btn-block">Register</button>
                                 </form>
                             </div>
                         </div>
